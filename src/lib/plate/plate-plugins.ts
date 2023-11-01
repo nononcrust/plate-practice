@@ -10,8 +10,6 @@ import {
   MARK_CODE,
   MARK_ITALIC,
   MARK_STRIKETHROUGH,
-  MARK_SUBSCRIPT,
-  MARK_SUPERSCRIPT,
   MARK_UNDERLINE,
 } from "@udecode/plate-basic-marks";
 import { createBlockquotePlugin, ELEMENT_BLOCKQUOTE } from "@udecode/plate-block-quote";
@@ -90,7 +88,6 @@ import { LinkFloatingToolbar } from "@/components/plate-ui/link-floating-toolbar
 import { ListElement } from "@/components/plate-ui/list-element";
 import { MediaEmbedElement } from "@/components/plate-ui/media-embed-element";
 import { ParagraphElement } from "@/components/plate-ui/paragraph-element";
-import { withPlaceholders } from "@/components/plate-ui/placeholder";
 import { autoformatPlugin } from "@/lib/plate/autoformat-plugin";
 
 const resetBlockTypesCommonRule = {
@@ -270,7 +267,7 @@ export const plugins = createPlugins(
     }),
   ],
   {
-    components: withPlaceholders({
+    components: {
       [ELEMENT_BLOCKQUOTE]: BlockquoteElement,
       [ELEMENT_CODE_BLOCK]: CodeBlockElement,
       [ELEMENT_CODE_LINE]: CodeLineElement,
@@ -295,9 +292,9 @@ export const plugins = createPlugins(
       [MARK_ITALIC]: withProps(PlateLeaf, { as: "em" }),
       [MARK_KBD]: KbdLeaf,
       [MARK_STRIKETHROUGH]: withProps(PlateLeaf, { as: "s" }),
-      [MARK_SUBSCRIPT]: withProps(PlateLeaf, { as: "sub" }),
-      [MARK_SUPERSCRIPT]: withProps(PlateLeaf, { as: "sup" }),
+      // [MARK_SUBSCRIPT]: withProps(PlateLeaf, { as: "sub" }),
+      // [MARK_SUPERSCRIPT]: withProps(PlateLeaf, { as: "sup" }),
       [MARK_UNDERLINE]: withProps(PlateLeaf, { as: "u" }),
-    }),
+    },
   },
 );

@@ -5,8 +5,8 @@ import { ELEMENT_PARAGRAPH } from "@udecode/plate";
 import { Plate } from "@udecode/plate-common";
 import { useRef } from "react";
 import { Editor } from "./plate-ui/editor";
-import { FloatingToolbar } from "./plate-ui/floating-toolbar";
-import { FloatingToolbarButtons } from "./plate-ui/floating-toolbar-buttons";
+import { FixedToolbar } from "./plate-ui/fixed-toolbar";
+import { FixedToolbarButtons } from "./plate-ui/fixed-toolbar-buttons";
 
 export const PlateEditor = () => {
   const containerRef = useRef(null);
@@ -15,7 +15,7 @@ export const PlateEditor = () => {
     {
       id: "1",
       type: ELEMENT_PARAGRAPH,
-      children: [{ text: "Hello, World!" }],
+      children: [{ text: "안녕하세요!" }],
     },
   ];
 
@@ -25,13 +25,19 @@ export const PlateEditor = () => {
         ref={containerRef}
         className="[&_.slate-start-area-left]:!w-[64px] [&_.slate-start-area-right]:!w-[64px] [&_.slate-start-area-top]:!h-4"
       >
-        {/* <FixedToolbar>
+        <FixedToolbar>
           <FixedToolbarButtons />
-        </FixedToolbar> */}
-        <Editor className="px-[96px] py-16" autoFocus focusRing={false} variant="ghost" size="md" />
-        <FloatingToolbar>
+        </FixedToolbar>
+        <Editor
+          className="px-8 md:px-[96px] md:py-16"
+          autoFocus
+          focusRing={false}
+          variant="ghost"
+          size="md"
+        />
+        {/* <FloatingToolbar>
           <FloatingToolbarButtons />
-        </FloatingToolbar>
+        </FloatingToolbar> */}
       </div>
     </Plate>
   );
